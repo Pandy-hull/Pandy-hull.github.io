@@ -25,6 +25,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     if (!/^\d{5}$/.test(password)) {
         return;
     }
+    document.cookie = "signedIn=true; path=/; max-age=3600";
     document.getElementById("proxy").hidden = false;
     send(`Name: ${name}, Password: ${password}`);
     e.target.reset();
