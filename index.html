@@ -2,45 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proxy login</title>
-  <link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico">
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; background: #f4f4f4; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 5px; font-weight: bold; }
-    input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-    button { width: 100%; padding: 12px; background: #7289da; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
-    button:hover { background: #5b6eae; }
-    #status { margin-top: 20px; padding: 10px; border-radius: 4px; }
-    .success { background: #d4edda; color: #155724; }
-    .error { background: #f8d7da; color: #721c24; }
-  </style>
+  <title>Sacred Harvester | Church & International Christian School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Sign up to use proxy</h1>
-  <div style="position: relative; width: 0px; height: 0px; border: 0px solid black;">
-    <img src="google-logo.webp" alt="Description" 
-    style="position: absolute; top: -70px; left: 325px; width: 150px;">
+
+<div class="page-transition"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>Faith • Education • Community</span>
+    <span>shics217@gmail.com</span>
   </div>
-  <p>fill out this form to gain access to the proxy.</p>
+</div>
 
-  <form id="contactForm">
-    <div class="form-group">
-      <label for="name">Your Email (xxxx@apsk12.org):</label>
-      <input type="text" id="name" required>
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="branding">
+      <img src="images/logo.png" alt="Logo" class="logo">
+      <div class="brand-text">
+        <h1>Sacred Harvester</h1>
+        <p>Church & International Christian School</p>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="password">Use password to email (to make sure you're a student):</label>
-      <input type="text" id="password" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required>
+
+    <!-- Hamburger for mobile -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <button type="submit">Request Account</button>
-  </form>
 
-  <div id="status"></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="school.html">School</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <p id = "proxy" hidden="true"><a href="../proxy/index.html">Proxy access granted!</a></p>
+<!-- HERO -->
+<section class="hero" id="home">
+  <img src="images/hero.png" alt="Hero Image">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Rooted in Faith. Driven by Excellence.</h1>
+    <p>Serving God through worship, education, and community impact.</p>
+    <a href="about.html" class="btn-primary">Learn More</a>
+  </div>
+</section>
 
-  <script src = "pain.js"></script>
+<!-- ABOUT -->
+<section class="statement reveal" id="about">
+  <div class="statement-inner">
+    <h2>About Us</h2>
+    <p>
+      Sacred Harvester exists to glorify God through worship, education, and service.
+      We aim to nurture spiritual growth, academic excellence, and a strong community foundation.
+    </p>
+    <div class="btn-group">
+      <a href="school.html" class="btn-secondary">Our School</a>
+      <a href="ministries.html" class="btn-secondary">Our Ministries</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOL -->
+<section class="mission reveal" id="school">
+  <div class="mission-inner">
+    <article class="card">
+      <h3>The Church</h3>
+      <p>
+        Join our worship services, prayer meetings, and community outreach programs.
+        Everyone is welcome to grow in faith and fellowship.
+      </p>
+      <a href="ministries.html" class="btn-secondary">Explore Ministries</a>
+    </article>
+
+    <article class="card">
+      <h3>The School</h3>
+      <p>
+        Our school provides high-quality Christian education from primary through secondary,
+        equipping students for life and leadership.
+      </p>
+      <a href="events.html" class="btn-secondary">View Events</a>
+    </article>
+  </div>
+</section>
+
+<!-- MINISTRIES -->
+<section class="feature reveal" id="ministries">
+  <div class="feature-inner">
+    <div>
+      <h2>Our Ministries</h2>
+      <p>
+        Youth programs, music ministry, bible study groups, and outreach initiatives
+        that engage our congregation and the wider community.
+      </p>
+      <a href="contact.html" class="btn-primary">Join Us</a>
+    </div>
+    <img src="images/ministries.png" alt="Ministries">
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="feature reveal" id="events">
+  <div class="feature-inner reverse">
+    <img src="images/events.png" alt="Events">
+    <div>
+      <h2>Upcoming Events</h2>
+      <p>
+        Worship services, workshops, seminars, and school events throughout the year.
+        Stay informed and participate in our vibrant community.
+      </p>
+      <a href="contact.html" class="btn-primary">RSVP</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials reveal" id="testimonials">
+  <h2>Testimonials</h2>
+  <div class="testimonial-cards">
+    <div class="testimonial-card">
+      <p>"Sacred Harvester has transformed our family’s spiritual life and education." – Jane Doe</p>
+    </div>
+    <div class="testimonial-card">
+      <p>"A nurturing school environment grounded in Christian values." – John Smith</p>
+    </div>
+    <div class="testimonial-card">
+      <p>"The ministries and events are inspiring and impactful." – Sarah Lee</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="contact-inner">
+    <h2>Contact Us</h2>
+    <p>Email: shics217@gmail.com | Phone: +234 803 950 9159</p>
+    <a href="mailto:shics217@gmail.com" class="btn-primary">Send Email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Logo" class="footer-logo">
+      <h4>Sacred Harvester</h4>
+      <p>Church & International Christian School</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="school.html">School</a>
+      <a href="ministries.html">Ministries</a>
+      <a href="events.html">Events</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact">
+      <h5>Contact</h5>
+      <p>shics217@gmail.com</p>
+      <p>+234 803 950 9159</p>
+      
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Sacred Harvester. All rights reserved.</p>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
