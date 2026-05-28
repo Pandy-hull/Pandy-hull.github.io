@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Config Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        form {
+            background: #2c2c2c; /* Dark form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #f1f1f1; /* Light text for labels */
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #444; /* Darker border */
+            background-color: #333; /* Dark input fields */
+            color: #f1f1f1; /* Light text color for inputs */
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        select, input[type="number"] {
+            background-color: #333; /* Dark select and number input */
+            color: #e0e0e0; /* Light text color */
+        }
+
+        option {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+        
+        .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-box {
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #2b2b2b;
+      border: 1px solid #444;
+    }
+
+    .code {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .mc-0  { color: #000000; } /* Black */
+    .mc-1  { color: #0000AA; } /* Dark Blue */
+    .mc-2  { color: #00AA00; } /* Dark Green */
+    .mc-3  { color: #00AAAA; } /* Dark Aqua */
+    .mc-4  { color: #AA0000; } /* Dark Red */
+    .mc-5  { color: #AA00AA; } /* Dark Purple */
+    .mc-6  { color: #FFAA00; } /* Gold */
+    .mc-7  { color: #AAAAAA; } /* Gray */
+    .mc-8  { color: #555555; } /* Dark Gray */
+    .mc-9  { color: #5555FF; } /* Blue */
+    .mc-a  { color: #55FF55; } /* Green */
+    .mc-b  { color: #55FFFF; } /* Aqua */
+    .mc-c  { color: #FF5555; } /* Red */
+    .mc-d  { color: #FF55FF; } /* Light Purple */
+    .mc-e  { color: #FFFF55; } /* Yellow */
+    .mc-f  { color: #FFFFFF; } /* White */
+
+    .mc-l { font-weight: bold; }       /* Bold */
+    .mc-m { text-decoration: line-through; } /* Strikethrough */
+    .mc-n { text-decoration: underline; }    /* Underline */
+    .mc-o { font-style: italic; }      /* Italic */
+    .mc-k { animation: obfuscate 0.1s infinite; } /* Obfuscated (simulated) */
+
+    @keyframes obfuscate {
+      0%   { content: "#"; }
+      25%  { content: "*"; }
+      50%  { content: "&"; }
+      75%  { content: "%"; }
+      100% { content: "@"; }
+    }
+    </style>
+</head>
+<body>
+
+<h1>Minecraft Color Codes</h1>
+  <div class="color-grid">
+    <div class="color-box mc-0"><span class="code">&0</span>Black</div>
+    <div class="color-box mc-1"><span class="code">&1</span>Dark Blue</div>
+    <div class="color-box mc-2"><span class="code">&2</span>Dark Green</div>
+    <div class="color-box mc-3"><span class="code">&3</span>Dark Aqua</div>
+    <div class="color-box mc-4"><span class="code">&4</span>Dark Red</div>
+    <div class="color-box mc-5"><span class="code">&5</span>Dark Purple</div>
+    <div class="color-box mc-6"><span class="code">&6</span>Gold</div>
+    <div class="color-box mc-7"><span class="code">&7</span>Gray</div>
+    <div class="color-box mc-8"><span class="code">&8</span>Dark Gray</div>
+    <div class="color-box mc-9"><span class="code">&9</span>Blue</div>
+    <div class="color-box mc-a"><span class="code">&a</span>Green</div>
+    <div class="color-box mc-b"><span class="code">&b</span>Aqua</div>
+    <div class="color-box mc-c"><span class="code">&c</span>Red</div>
+    <div class="color-box mc-d"><span class="code">&d</span>Light Purple</div>
+    <div class="color-box mc-e"><span class="code">&e</span>Yellow</div>
+    <div class="color-box mc-f"><span class="code">&f</span>White</div>
+
+    <div class="color-box"><span class="code">&l</span><span class="mc-l">Bold</span></div>
+    <div class="color-box"><span class="code">&m</span><span class="mc-m">Strikethrough</span></div>
+    <div class="color-box"><span class="code">&n</span><span class="mc-n">Underline</span></div>
+    <div class="color-box"><span class="code">&o</span><span class="mc-o">Italic</span></div>
+    <div class="color-box"><span class="code">&r</span>Reset (normal)</div>
+  </div>
+
+<h1>Item Config Generator</h1>
+<p>Fill out the form below to generate a YAML configuration for your item:</p>
+
+<form id="item-form">
+    <label for="name">Item Name:</label>
+    <input type="text" id="name" required placeholder="Sword of Power">
+    
+    <label for="type">Item Type:</label>
+<input type="text" id="type" required placeholder="Starter Armour">
+
+
+    <label for="material">Material:</label>
+    <select id="material" required onchange="updateStatsAccessibility()">
+        <optgroup label="Swords">
+            <option value="DIAMOND_SWORD">DIAMOND_SWORD</option>
+            <option value="IRON_SWORD">IRON_SWORD</option>
+            <option value="GOLDEN_SWORD">GOLDEN_SWORD</option>
+            <option value="NETHERITE_SWORD">NETHERITE_SWORD</option>
+            <option value="WOODEN_SWORD">WOODEN_SWORD</option>
+            <option value="STONE_SWORD">STONE_SWORD</option>
+        </optgroup>
+        <optgroup label="Armor">
+            <option value="DIAMOND_HELMET">DIAMOND_HELMET</option>
+            <option value="DIAMOND_CHESTPLATE">DIAMOND_CHESTPLATE</option>
+            <option value="DIAMOND_LEGGINGS">DIAMOND_LEGGINGS</option>
+            <option value="DIAMOND_BOOTS">DIAMOND_BOOTS</option>
+            <option value="IRON_HELMET">IRON_HELMET</option>
+            <option value="IRON_CHESTPLATE">IRON_CHESTPLATE</option>
+            <option value="IRON_LEGGINGS">IRON_LEGGINGS</option>
+            <option value="IRON_BOOTS">IRON_BOOTS</option>
+            <option value="GOLDEN_HELMET">GOLDEN_HELMET</option>
+            <option value="GOLDEN_CHESTPLATE">GOLDEN_CHESTPLATE</option>
+            <option value="GOLDEN_LEGGINGS">GOLDEN_LEGGINGS</option>
+            <option value="GOLDEN_BOOTS">GOLDEN_BOOTS</option>
+            <option value="NETHERITE_HELMET">NETHERITE_HELMET</option>
+            <option value="NETHERITE_CHESTPLATE">NETHERITE_CHESTPLATE</option>
+            <option value="NETHERITE_LEGGINGS">NETHERITE_LEGGINGS</option>
+            <option value="NETHERITE_BOOTS">NETHERITE_BOOTS</option>
+            <option value="LEATHER_HELMET">LEATHER_HELMET</option>
+            <option value="LEATHER_CHESTPLATE">LEATHER_CHESTPLATE</option>
+            <option value="LEATHER_LEGGINGS">LEATHER_LEGGINGS</option>
+            <option value="LEATHER_BOOTS">LEATHER_BOOTS</option>
+        </optgroup>
+        <optgroup label="Tools">
+            <option value="DIAMOND_PICKAXE">DIAMOND_PICKAXE</option>
+            <option value="IRON_PICKAXE">IRON_PICKAXE</option>
+            <option value="GOLDEN_PICKAXE">GOLDEN_PICKAXE</option>
+            <option value="NETHERITE_PICKAXE">NETHERITE_PICKAXE</option>
+            <option value="STONE_PICKAXE">STONE_PICKAXE</option>
+            <option value="WOODEN_PICKAXE">WOODEN_PICKAXE</option>
+            <option value="DIAMOND_SHOVEL">DIAMOND_SHOVEL</option>
+            <option value="IRON_SHOVEL">IRON_SHOVEL</option>
+            <option value="GOLDEN_SHOVEL">GOLDEN_SHOVEL</option>
+            <option value="NETHERITE_SHOVEL">NETHERITE_SHOVEL</option>
+            <option value="STONE_SHOVEL">STONE_SHOVEL</option>
+            <option value="WOODEN_SHOVEL">WOODEN_SHOVEL</option>
+            <option value="DIAMOND_HOE">DIAMOND_HOE</option>
+            <option value="IRON_HOE">IRON_HOE</option>
+            <option value="GOLDEN_HOE">GOLDEN_HOE</option>
+            <option value="NETHERITE_HOE">NETHERITE_HOE</option>
+            <option value="STONE_HOE">STONE_HOE</option>
+            <option value="WOODEN_HOE">WOODEN_HOE</option>
+        </optgroup>
+        <optgroup label="Bows">
+            <option value="BOW">BOW</option>
+        </optgroup>
+        <optgroup label="Amulets">
+            <option value="IRON_NUGGET">IRON_NUGGET</option>
+        </optgroup>
+    </select>
+
+    <label for="rarity">Rarity:</label>
+    <select id="rarity" required>
+        <option value="LEGENDARY">LEGENDARY</option>
+        <option value="MYTHIC">MYTHIC</option>
+        <option value="ASCENDED">ASCENDED</option>
+        <option value="EPIC">EPIC</option>
+        <option value="RARE">RARE</option>
+        <option value="UNCOMMON">UNCOMMON</option>
+        <option value="COMMON">COMMON</option>
+    </select>
+
+    <label for="lore">Lore (separate lines):</label>
+    <textarea id="lore" required placeholder="A sword forged from the sun itself.\nIt radiates immense power.\nOnly wielded by the worthy."></textarea>
+
+    <h2>Stats:</h2>
+    <div id="damage-container">
+        <label for="damage">Damage:</label>
+        <input type="number" id="damage" value="0" required>
+    </div>
+
+    <div id="strength-container">
+        <label for="strength">Strength:</label>
+        <input type="number" id="strength" value="0" required>
+    </div>
+
+    <div id="health-container">
+        <label for="defense">Health:</label>
+        <input type="number" id="health" value="0" required>
+    </div>
+
+    <div id="defense-container">
+        <label for="defense">Defense:</label>
+        <input type="number" id="defense" value="0" required>
+    </div>
+
+    <div id="truedamage-container">
+        <label for="truedamage">True Damage:</label>
+        <input type="number" id="truedamage" value="0" required>
+    </div>
+
+    <div id="truedefense-container">
+        <label for="truedefense">True Defense:</label>
+        <input type="number" id="truedefense" value="0" required>
+    </div>
+
+    <div id="ferocity-container">
+        <label for="ferocity">Ferocity:</label>
+        <input type="number" id="ferocity" value="0" required>
+    </div>
+
+    <div id="speed-container">
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" value="0" required>
+    </div>
+
+    <div id="prosperity-container">
+        <label for="prosperity">Prosperity:</label>
+        <input type="number" id="prosperity" value="0" required>
+    </div>
+
+    <div id="attack_speed-container" style="display:none;">
+        <label for="attack_speed">Attack Speed:</label>
+        <input type="number" id="attack_speed" value="0" required>
+    </div>
+
+    <div id="amuletdamage-container" style="display:none;">
+        <label for="amuletdamage">Amulet Damage:</label>
+        <input type="number" id="amuletdamage" value="0" required>
+    </div>
+
+    <div id="amuletdefense-container" style="display:none;">
+        <label for="amuletdefense">Amulet Defense:</label>
+        <input type="number" id="amuletdefense" value="0" required>
+    </div>
+
+    <div id="mining_fortune-container" style="display:none;">
+        <label for="mining_fortune">Mining Fortune:</label>
+        <input type="number" id="mining_fortune" value="0" required>
+    </div>
+
+    <div id="heat_resistance-container" style="display:none;">
+        <label for="heat_resistance">Heat Resistance:</label>
+        <input type="number" id="heat_resistance" value="0" required>
+    </div>
+
+    <div id="trophy_chance-container" style="display:none;">
+        <label for="trophy_chance">Trophy Chance:</label>
+        <input type="number" id="trophy_chance" value="0" required>
+    </div>
+
+    <div id="fishing_fortune-container" style="display:none;">
+        <label for="fishing_fortune">Fishing Fortune:</label>
+        <input type="number" id="fishing_fortune" value="0" required>
+    </div>
+
+    <div id="farming_fortune-container" style="display:none;">
+        <label for="farming_fortune">Farming Fortune:</label>
+        <input type="number" id="farming_fortune" value="0" required>
+    </div>
+
+    <button type="button" onclick="generateYAML()">Generate YAML</button>
+    
+    <button type="button" onclick="copyYAML()">Copy YAML</button>
+<span id="copy-feedback" style="margin-left:10px; color:lightgreen;"></span>
+
+</form>
+
+<pre id="output"></pre>
+
+<script>
+// JavaScript to handle visibility of stats based on selected material
+function updateStatsAccessibility() {
+
+    const statFields = [
+    'damage', 'strength', 'health', 'defense', 'truedamage', 'truedefense',
+    'ferocity', 'speed', 'prosperity', 'attack_speed', 'amuletdamage', 'amuletdefense',
+    'mining_fortune', 'heat_resistance', 'fishing_fortune', 'trophy_chance', 'farming_fortune'
+];
+
+statFields.forEach(id => {
+    const field = document.getElementById(id);
+    if (field) field.value = 0;
+});
+    
+    const material = document.getElementById('material').value;
+    
+    // Show amulet stats only for Iron Nugget
+    if (material === "IRON_NUGGET") {
+        document.getElementById('amuletdamage-container').style.display = 'block';
+        document.getElementById('amuletdefense-container').style.display = 'block';
+    } else {
+        document.getElementById('amuletdamage-container').style.display = 'none';
+        document.getElementById('amuletdefense-container').style.display = 'none';
+    }
+
+    // Additional Restrictions (based on item categories)
+    const isSword = material.includes("SWORD");
+    const isArmor = material.includes("HELMET") || material.includes("CHESTPLATE") || material.includes("LEGGINGS") || material.includes("BOOTS");
+    const isTool = material.includes("PICKAXE") || material.includes("SHOVEL") || material.includes("HOE");
+    const isBow = material === "BOW";
+
+    // Restrict fields based on material type
+    document.getElementById('damage-container').style.display = isSword || isTool || isBow ? 'block' : 'none';
+    document.getElementById('strength-container').style.display = isSword || isArmor || isTool || isBow ? 'block' : 'none';
+    document.getElementById('health-container').style.display = isArmor ? 'block' : 'none';
+    document.getElementById('defense-container').style.display = isArmor ? 'block' : 'none';
+    document.getElementById('truedamage-container').style.display = isSword || isTool ? 'block' : 'none';
+    document.getElementById('truedefense-container').style.display = isArmor ? 'block' : 'none';
+    document.getElementById('ferocity-container').style.display = isSword || isBow ? 'block' : 'none';
+    document.getElementById('mining_fortune-container').style.display = isTool ? 'block' : 'none';
+    document.getElementById('fishing_fortune-container').style.display = isTool ? 'block' : 'none';
+    document.getElementById('trophy_chance-container').style.display = isTool ? 'block' : 'none';
+    document.getElementById('farming_fortune-container').style.display = isTool ? 'block' : 'none';
+    document.getElementById('speed-container').style.display = isBow || isTool || isTool ? 'block' : 'none';
+    document.getElementById('attack_speed-container').style.display = isBow || isSword || isTool ? 'block' : 'none';
+    document.getElementById('prosperity-container').style.display = isBow || isSword || isTool || isArmor ? 'block' : 'none';
+    document.getElementById('heat_resistance-container').style.display = isArmor ? 'block' : 'none';
+
+    // Restrict stats for Bows
+    if (isBow) {
+        document.getElementById('damage-container').style.display = 'none';
+        document.getElementById('strength-container').style.display = 'none';
+        document.getElementById('health-container').style.display = 'none';
+        document.getElementById('defense-container').style.display = 'none';
+        document.getElementById('truedamage-container').style.display = 'none';
+        document.getElementById('truedefense-container').style.display = 'none';
+        document.getElementById('ferocity-container').style.display = 'none';
+        document.getElementById('heat_resistance-container').style.display = 'none';
+        document.getElementById('mining_fortune-container').style.display = 'none';
+        document.getElementById('fishing_fortune-container').style.display = 'none';
+        document.getElementById('farming_fortune-container').style.display = 'none';
+        document.getElementById('attack_speed-container').style.display = 'none';
+        document.getElementById('trophy_chance-container').style.display = 'none';
+        
+    }
+}
+
+function generateYAML() {
+    const name = document.getElementById('name').value;
+    const material = document.getElementById('material').value;
+    const rarity = document.getElementById('rarity').value;
+    const lore = document.getElementById('lore').value.split('\n');
+    const type = document.getElementById('type').value;
+
+    const rarityColors = {
+        "COMMON": "&f",
+        "UNCOMMON": "&a",
+        "RARE": "&9",
+        "EPIC": "&5",
+        "LEGENDARY": "&6",
+        "MYTHIC": "&d",
+        "ASCENDED": "&c"
+    };
+
+    const coloredName = rarityColors[rarity] + name;
+
+    const stats = {
+        damage: document.getElementById('damage').value,
+        strength: document.getElementById('strength').value,
+        health: document.getElementById('health').value,
+        defense: document.getElementById('defense').value,
+        truedamage: document.getElementById('truedamage').value,
+        truedefense: document.getElementById('truedefense').value,
+        ferocity: document.getElementById('ferocity').value,
+        speed: document.getElementById('speed').value,
+        attack_speed: document.getElementById('attack_speed').value,
+        prosperity: document.getElementById('prosperity').value,
+        amuletdamage: document.getElementById('amuletdamage').value,
+        amuletdefense: document.getElementById('amuletdefense').value,
+        heat_resistance: document.getElementById('heat_resistance').value,
+        mining_fortune: document.getElementById('mining_fortune').value,
+        fishing_fortune: document.getElementById('fishing_fortune').value,
+        farming_fortune: document.getElementById('farming_fortune').value,
+        trophy_chance: document.getElementById('trophy_chance').value,
+    };
+
+    let yamlData = `name: "${coloredName}"
+material: ${material}
+type: ${type}
+rarity: ${rarity}
+lore:
+  - "${lore.join('"\n  - "')}"
+
+stats:
+`;
+
+    for (const [key, value] of Object.entries(stats)) {
+        if (value !== '' && value !== '0') {
+            yamlData += `  ${key}: ${value}\n`;
+        }
+    }
+
+    document.getElementById('output').textContent = yamlData;
+}
+
+function copyYAML() {
+    const yaml = document.getElementById('output').textContent;
+
+    if (!yaml.trim()) {
+        document.getElementById('copy-feedback').textContent = "Nothing to copy!";
+        return;
+    }
+
+    navigator.clipboard.writeText(yaml).then(() => {
+        document.getElementById('copy-feedback').textContent = "YAML copied!";
+        setTimeout(() => {
+            document.getElementById('copy-feedback').textContent = "";
+        }, 2000);
+    }).catch(err => {
+        console.error("Copy failed:", err);
+        document.getElementById('copy-feedback').textContent = "Copy failed!";
+    });
+}
+
+// Initial call
+updateStatsAccessibility();
+</script>
+
+
+
+</body>
+</html>
